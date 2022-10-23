@@ -8,12 +8,12 @@ import { useInView } from "react-intersection-observer";
 
 const categories: string[] = [
   "All",
-  "Love",
+  "Relationships",
+  "Wealth",
+  "Self",
   "Mind",
   "Health",
-  "Wealth",
   "World",
-  "Self",
 ];
 
 export default function Home(props: any) {
