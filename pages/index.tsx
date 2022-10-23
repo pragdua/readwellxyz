@@ -1,23 +1,33 @@
 import { posts } from "../lib/notion";
 import sun from "../public/sun.png";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const categories: string[] = [
-  "All", //0
-  "Love", //1
-  "Mind", //2
-  "Health", //3
-  "Wealth", //4
-  "World", //5
-  "Self", //6
+  "All",
+  "Love",
+  "Mind",
+  "Health",
+  "Wealth",
+  "World",
+  "Self",
 ];
 
 export default function Home(props: any) {
   const [category, setCategory] = useState(0);
+  const control = useAnimation();
+  const [ref, inView] = useInView();
 
-  console.log(categories[category]);
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
 
   return (
     <>
