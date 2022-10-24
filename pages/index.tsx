@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import "../styles/Home.module.css"
 
 const categories: string[] = [
   "All",
@@ -71,11 +72,11 @@ export default function Home(props: any) {
             )
               return (
                 <PostCard
-                  title={result.properties.Name?.title[0]?.plain_text}
-                  author={result.properties.Author?.rich_text[0]?.plain_text}
-                  url={result.properties.PostLink?.rich_text[0]?.plain_text}
-                  key={result.id}
-                  category={result.properties.Category.multi_select}
+                  title={result?.properties.Name?.title[0]?.plain_text}
+                  author={result?.properties.Author?.rich_text[0]?.plain_text}
+                  url={result?.properties.PostLink?.rich_text[0]?.plain_text}
+                  key={result?.id}
+                  category={result?.properties.Category.multi_select}
                 ></PostCard>
               );
           })}
