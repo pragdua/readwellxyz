@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { posts } from "../lib/notion";
 import PostCard from "../components/PostCard";
 import "../styles/Home.module.css";
@@ -18,16 +16,6 @@ const categories: string[] = [
 
 export default function Home({ posts }: any) {
   const [category, setCategory] = useState(0);
-  const control = useAnimation();
-  const [ref, inView] = useInView();
-
-  useEffect(() => {
-    if (inView) {
-      control.start("visible");
-    } else {
-      control.start("hidden");
-    }
-  }, [control, inView]);
 
   return (
     <div>
