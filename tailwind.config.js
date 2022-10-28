@@ -14,6 +14,10 @@ module.exports = {
         spectral: ["Spectral", "serif"],
       },
     },
+    backgroundImage: {
+      "main-grad": "linear-gradient(to top, #C7D2FE, #FECACA, #FEFEF6);",
+      "main-grad-short": "linear-gradient(to top, rgba(254, 202, 202, 1) 0%, rgba(255, 234, 234, 1) 25%, rgba(254, 254, 246, 1) 100%)"
+    }
   },
   plugins: [],
 };
