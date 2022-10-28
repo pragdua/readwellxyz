@@ -4,6 +4,7 @@ import { posts } from "../lib/notion";
 import PostCard from "../components/PostCard";
 import "../styles/Home.module.css";
 import { useCatagories } from "../hooks/useCategories";
+import Head from "next/head";
 
 const categories: string[] = [
   "All",
@@ -21,6 +22,9 @@ export default function Home({ posts }: any) {
 
   return (
     <div className={links.length > 25 ? "bg-main-grad" : "bg-main-grad-short"}>
+      <Head>
+        <title>readwell</title>
+      </Head>
       <div className="mt-40 w-3/4 flex flex-col mx-auto sm:ml-32">
         <div className="pb-6">
           <Image src="/sun.png" height={48} width={48} alt="sun" />

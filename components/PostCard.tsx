@@ -37,9 +37,11 @@ const PostCard = (props: PostCardProps) => {
       animate={control}
     >
       <Link href={props.url}>
-        <div className="font-spectral font-medium text-lg md:text-xl cursor-pointer hover:opacity-60 transition-all">
-          {props.title}
-        </div>
+        <a target="_blank" rel="noreferrer">
+          <div className="font-spectral font-medium text-lg md:text-xl cursor-pointer hover:opacity-60 transition-all">
+            {props.title}
+          </div>
+        </a>
       </Link>
       <div className="font-spectral font-medium text-base md:text-lg opacity-50">
         {props.author}
