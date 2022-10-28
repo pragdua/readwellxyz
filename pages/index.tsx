@@ -3,6 +3,7 @@ import Image from "next/image";
 import { posts } from "../lib/notion";
 import PostCard from "../components/PostCard";
 import "../styles/Home.module.css";
+import { useCatagories } from "../hooks/useCategories";
 
 const categories: string[] = [
   "All",
@@ -16,6 +17,7 @@ const categories: string[] = [
 
 export default function Home({ posts }: any) {
   const [category, setCategory] = useState(0);
+  const links = useCatagories(posts, categories, category);
 
   return (
     <div>
@@ -48,21 +50,15 @@ export default function Home({ posts }: any) {
 
       <div className="w-3/4 flex flex-col mx-auto sm:ml-32">
         <div className="mt-10 flex flex-col gap-9 mb-12 text-mygrey">
-          {posts.map((result: any, index: number) => {
-            const catArr = result.properties.Category.multi_select.map(
-              (item: any) => item.name
-            );
-            if (catArr.includes(categories[category]) || category === 0)
-              return (
-                <PostCard
-                  title={result?.properties.Name?.title[0]?.plain_text}
-                  author={result?.properties.Author?.rich_text[0]?.plain_text}
-                  url={result?.properties.PostLink?.rich_text[0]?.plain_text}
-                  key={result?.id}
-                  category={result?.properties.Category.multi_select}
-                />
-              );
-          })}
+          {links.map((link: any) => (
+            <PostCard
+              title={link?.properties.Name?.title[0]?.plain_text}
+              author={link?.properties.Author?.rich_text[0]?.plain_text}
+              url={link?.properties.PostLink?.rich_text[0]?.plain_text}
+              key={link?.id}
+              category={link?.properties.Category.multi_select}
+            />
+          ))}
         </div>
       </div>
     </div>
