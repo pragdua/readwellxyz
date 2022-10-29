@@ -24,6 +24,21 @@ export default function Home({ posts }: any) {
     <div className={links.length > 25 ? "bg-main-grad" : "bg-main-grad-short"}>
       <Head>
         <title>readwell</title>
+
+        <meta
+          name="description"
+          content="Rich long form essays, articles & blogs curated with care."
+          key="desc"
+        />
+
+        <meta property="og:title" content="Curated quality long reading" />
+
+        <meta
+          property="og:description"
+          content="Rich long form essays, articles & blogs curated with care."
+        />
+
+        <meta property="og:image" content="../public/eggsun.jpeg" />
       </Head>
       <div className="mt-40 w-3/4 flex flex-col mx-auto sm:ml-32">
         <div className="pb-6">
