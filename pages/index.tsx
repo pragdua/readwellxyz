@@ -21,7 +21,7 @@ export default function Home({ posts }: any) {
   const links = useCatagories(posts, categories, category);
 
   return (
-    <div className={links.length > 25 ? "bg-main-grad" : "bg-main-grad-short"}>
+    <div className="min-h-full bg-main-grad">
       <Head>
         <title>readwell</title>
 
