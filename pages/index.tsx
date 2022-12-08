@@ -5,6 +5,7 @@ import PostCard from "../components/PostCard";
 import "../styles/Home.module.css";
 import { useCatagories } from "../hooks/useCategories";
 import Head from "next/head";
+import Link from "next/link";
 
 const categories: string[] = [
   "All",
@@ -19,6 +20,9 @@ const categories: string[] = [
 export default function Home({ posts }: any) {
   const [category, setCategory] = useState(0);
   const links = useCatagories(posts, categories, category);
+  const randomLink = () =>
+    links[Math.round(Math.random() * (links.length - 1))]?.properties.PostLink
+      ?.rich_text[0]?.plain_text;
 
   return (
     <div className="min-h-full bg-main-grad">
@@ -49,6 +53,16 @@ export default function Home({ posts }: any) {
             with care.
           </div>
         </div>
+      </div>
+
+      <div className="mt-12 w-3/4 flex flex-col mx-auto sm:ml-32">
+        <Link href={randomLink()}>
+          <a target="_blank" rel="noreferrer">
+            <div className="font-spectral font-medium text-lg md:text-xl cursor-pointer hover:opacity-60 transition-all underline text-mygrey">
+              I&apos;m Feeling Lucky
+            </div>
+          </a>
+        </Link>
       </div>
 
       <div className="font-spectral pl-[12.5%] pr-[12.5%] sm:ml-32 sm:pl-0 font-medium flex flex-row gap-4 mt-12 overflow-x-scroll no-scrollbar text-mygrey">
